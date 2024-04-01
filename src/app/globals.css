@@ -2,32 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+html,
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply h-screen w-screen overflow-hidden grid bg-zinc-950;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: 65px 1fr 45px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+header {
+  @apply bg-zinc-800 text-white flex items-center justify-between px-6;
+  grid-area: header;
+}
+
+header nav {
+  @apply flex justify-end items-center h-full;
+}
+
+main {
+  @apply bg-zinc-200;
+  grid-area: main;
+}
+
+footer {
+  @apply bg-zinc-800 text-white flex items-center justify-center;
+  grid-area: footer;
+}
+
+main section {
+  @apply grid place-content-center place-items-center h-full;
+}
+
+.logo h1 {
+  @apply text-xl font-bold;
 }
