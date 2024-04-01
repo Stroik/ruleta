@@ -14,13 +14,16 @@ export const EditTable = ({ participants }: { participants: Data[] }) => {
   const navigate = useRouter();
 
   const postData = async (data: Data[]) => {
-    const response = await fetch("http://localhost:3000/api/participants", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/participants`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
     return response.json();
   };
 
