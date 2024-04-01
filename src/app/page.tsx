@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Hecho por Augusto Marinaro para las daily meetings de AI Services",
 };
 
-export async function getData() {
+async function getData() {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/participants`, {
     cache: "no-store"
   });
